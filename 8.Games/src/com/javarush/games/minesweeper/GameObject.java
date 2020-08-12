@@ -8,6 +8,8 @@ public class GameObject {
 
     public boolean isMine;
 
+    public int countMineNeighbors;
+
     public GameObject(int x, int y, boolean isMine) {
         this.x = x;
         this.y = y;
