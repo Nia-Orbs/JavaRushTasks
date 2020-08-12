@@ -8,6 +8,8 @@ public class MinesweeperGame extends Game {
 
     private GameObject[][] gameField = new GameObject[SIDE][SIDE];
 
+    private int countMinesOnField;
+
     @Override
     public void initialize() {
         setScreenSize(SIDE, SIDE);
@@ -15,11 +17,18 @@ public class MinesweeperGame extends Game {
     }
 
     private void createGame(){
+        int count = 0;
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                gameField[i][j] = new GameObject(j, i);
+                boolean isMine = i == getRandomNumber(10);
+                gameField[i][j] = new GameObject(j, i, isMine);
+                if (isMine) {
+                    count++;
+                }
                 setCellColor(i, j, Color.CORAL);
             }
         }
+
+        countMinesOnField = count;
     }
 }
